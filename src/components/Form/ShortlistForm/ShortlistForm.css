@@ -1,0 +1,18 @@
+#shortlist-photo, #shortlist-file {
+    width: 80px;
+    height:70px;
+}
+
+#photo-label, #file-label {
+    background-color: #000322;;
+    vertical-align: center;
+    padding: 15px 0px;
+    border-radius: 5px;
+    color: white;
+}
+#shortlist-form {
+    background-color: rgba(255, 255, 255, 0.9);
+    position: absolute;
+    z-index: 2;
+    margin-top: -50px;
+}

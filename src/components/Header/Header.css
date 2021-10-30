@@ -1,0 +1,10 @@
+header{
+    /* background: linear-gradient(  130deg, #343243, #00dac1, #000322); */
+    background: linear-gradient(  130deg, #343243, #000322);
+    height: 10vh;
+}
+h1 {
+    color: white;
+    font-family: forte, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-align: left;
+}

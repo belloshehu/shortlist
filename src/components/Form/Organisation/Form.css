@@ -1,0 +1,30 @@
+
+form {
+    font-family: monospace;
+}
+@media  screen and (min-width:500px){
+    form{
+        margin: 5% 20%;
+
+    }
+}
+
+@media  screen and (max-width:499px){
+    form{
+        margin: 0% 0%;
+    }
+}
+
+#organisation-logo {
+    width: 80px;
+    height:70px;
+}
+
+#logo-label {
+    background-color: #000322;;
+    vertical-align: center;
+    padding: 15px 0px;
+    border-radius: 5px;
+    color: white;
+
+}

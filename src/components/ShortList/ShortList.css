@@ -1,0 +1,14 @@
+#organisation-photo {
+    height: 40px;
+    width: 40px;
+    float: left;
+    border-radius: 50%
+}
+#shortlist-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    color: #000322;
+    
+}
