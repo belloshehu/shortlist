@@ -1,4 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
+
 export const shortlistSlice = createSlice({
     name: "shortlist",
     initialState: {

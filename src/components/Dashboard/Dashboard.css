@@ -1,0 +1,11 @@
+h2 {
+    color: #000322;
+}
+#main-body {
+    margin: 5% 5%;
+    color: #000322;
+    text-align:left;
+    font-size: 1.2rem;
+    line-height: 2rem;
+    font-family: monospace;
+}

@@ -31,21 +31,14 @@ import logo from '../../../images/image.png'
 import {setUser, setShowShortlistForm} from '../../../features/shortlist/shortlistSlice';
 import {useSelector, useDispatch} from 'react-redux'
 
-function ShortlistForm() {
+function UpdateShortlistForm() {
+    const {id} = useParams()
     const showShortlistForm = useSelector((state) =>state.shortlist.showShortlistForm)
     const dispatch = useDispatch()
-    const initialValue = {
-        title: "",
-        description: "",
-        dateReleased: "",
-        dateExpired: "",
-        photo: logo,
-        searchField: "",
-        shortlistFile: ""
-    }
+    const [searchKey, setSearchKey] = useState("name")
     const [passwordVisible, setPasswordVisible] = useState(false)
     const [inputType, setInputType] = useState("password")
-    const [value, setValue] = useState(initialValue)
+    const [value, setValue] = useState({})
     const [error, setError] = useState(false)
     const [status, setStatus] = useState("")
 
@@ -69,28 +62,48 @@ function ShortlistForm() {
             return 
         }else{
             try{
-                const {data} = await axios.post('http://localhost:8000/shortlist', value, {
+                const {data} = await axios.patch(`http://localhost:8000/shortlist/${id}`, value, {
                     headers: {
                         authorization: `Bearer ${localStorage.getItem('token')}`
                     }
                 })
                 console.log(data)
-                setStatus("Shortlist created successfully")
+                setStatus("Shortlist updated successfully")
             }catch(error){
                 console.log(error)
             }
         }
         setError(false)
     }
-
+    const getShortlist = async() => {
+        try{
+            const {data: {shortlist}} = await axios.get(`http://localhost:8000/shortlist/all/${id}`)
+            const {
+                title, 
+                description, 
+                dateReleased, 
+                dateExpired, 
+                photo, 
+                shortlistFile,
+                searchField
+            } = shortlist
+            setValue({title, description, dateReleased, dateExpired, photo, shortlistFile, searchField})
+            console.log(shortlist)
+        }catch(error){
+            console.log(error)
+        }
+    }
+    useEffect(() => {
+        getShortlist()
+    }, [])
     return (
-        <div id='shortlist-form'>
+        <div id='shortlist-form' style={{display: showShortlistForm?"none": "block"}}>
             <form method="POST" onSubmit={handleFormSubmit}>
             <span style={{color: 'green'}}>{status}</span>
-            <h2 style={{textAlign:'left'}}>New shortlist</h2><hr/>
+            <h2 style={{textAlign:'left'}}>Update shortlist</h2><hr/>
             <Grid spacing={2} container>
                 <Grid item sm={12} lg={12}>
-                    <p>Enter information for the shortlist you wish to create</p>
+                    <p>Update information for the shortlist</p>
                 </Grid>
             </Grid>
                 <FormGroup>
@@ -214,7 +227,7 @@ function ShortlistForm() {
                                 // onClick={()=>dispatch(setShowShortlistForm(false))}
                                 to="/"
                                 sx={{marginLeft:'20px'}}
-                                >Close</Link>
+                            >Close</Link>
                         </Grid>
 
                     </Grid>   
@@ -224,4 +237,4 @@ function ShortlistForm() {
     )
 }
 
-export default ShortlistForm
+export default UpdateShortlistForm

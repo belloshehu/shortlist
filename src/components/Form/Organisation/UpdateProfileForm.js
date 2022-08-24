@@ -27,7 +27,7 @@ import {Link} from 'react-router-dom';
 import './Form.css'
 import logo from '../../../images/image.png'
 
-function Form() {
+function UpdateProfileForm() {
     const initialValue = {
         name: "",
         phoneNumber: "",
@@ -184,64 +184,8 @@ function Form() {
                             />
                         </Grid>
                         <Grid item sm={12} lg={6}>
-                            <FormControl fullWidth variant="outlined">
-                                <InputLabel htmlFor="password">Password</InputLabel>
-                                <OutlinedInput 
-                                    onChange={handleInputChange}
-                                    value={value.password1}
-                                    required  
-                                    type={inputType}
-                                    name="password1"
-                                    id="password"
-                                    required
-                                    endAdornment={
-                                        <InputAdornment position="end">
-                                            <IconButton
-                                                edge="end"
-                                                aria-label="toggle password visibility"
-                                                onClick={handlePasswordVisibilityClick}
-                                            >
-                                                {passwordVisible? <Visibility />: <VisibilityOff />}
-                                            </IconButton>
-                                        </InputAdornment>
-                                    }
-                                />
-                            </FormControl>
-                        </Grid> 
-                        <Grid item sm={12} lg={6}>
-                            <FormControl fullWidth variant="outlined">
-                                <InputLabel htmlFor="confirm-password">Confirm password</InputLabel>
-                                <OutlinedInput 
-                                    onChange={handleInputChange}
-                                    value={value.password2}
-                                    required 
-                                    type="password"
-                                    name="password2"
-                                    id="confirm-password"
-                                    error={error}
-                                    endAdornment={
-                                        <InputAdornment position="end">
-                                            <IconButton
-                                                edge="end"
-                                                aria-label="toggle confirm password visibility"
-                                                onClick={handlePasswordVisibilityClick}
-                                            >
-                                                {passwordVisible? <Visibility />: <VisibilityOff />}
-                                            </IconButton>
-                                        </InputAdornment>
-                                    }
-                                />
-                            </FormControl>
-                        </Grid> 
-                        <Grid item sm={12} lg={6}>
                             <Button variant="contained" type="submit"  edge="start">Submit</Button>
                             <Link variant="contained"  to="/" edge="end" component={Button}>Cancel</Link>
-                        </Grid>
-                        <h color="primary"/>
-                        <Grid item sm={12} lg={6}>
-                            <Typography>Have an account? 
-                                <Link variant="contained"  to="/login" edge="end" component={Button}> Login</Link>
-                            </Typography>
                         </Grid>
                     </Grid>   
                 </FormGroup>
@@ -250,4 +194,4 @@ function Form() {
     )
 }
 
-export default Form
+export default UpdateProfileForm

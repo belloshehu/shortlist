@@ -9,6 +9,6 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: baseline;
-    color: #000322;
-    
+    background-color: #000322; 
+    color: white;
 }

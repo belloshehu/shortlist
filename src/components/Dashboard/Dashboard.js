@@ -67,7 +67,11 @@ function Dashboard() {
                         <Grid sm={12} >
                             <Typography>{user.name}</Typography>
                             <p>{user.email}</p>
-                            <Button variant="contained">Edit profile</Button>
+                            <Link 
+                                variant="contained" 
+                                component={Button}
+                                to={`/organisation-update/${user._id}`}
+                            >Edit profile</Link>
                         </Grid>
 
                    </Grid>
@@ -75,6 +79,8 @@ function Dashboard() {
                 (
                    <Grid container>
                         <Grid sm={12} >
+                            <p>Total shortlists
+                            <Badge color='secondary' badgeContent={userShortlists.length} />
                             <Link 
                                 variant="contained" 
                                 component={Button}
@@ -82,7 +88,7 @@ function Dashboard() {
                             >
                             Add shortlist
                             </Link>
-                            <Badge color='secondary' badgeContent={userShortlists.length} />
+                            </p>
                         </Grid>
                         {
                             userShortlists.map((userShortlist)=>{

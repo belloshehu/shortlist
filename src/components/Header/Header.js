@@ -41,7 +41,7 @@ function Header() {
                     aria-label="open drawer"
                     sx={{ mr: 2 }}
                 >
-                    <MenuIcon />
+                    <MenuIcon/>
                 </IconButton>
                 <Typography
                     variant="h6"
@@ -49,7 +49,8 @@ function Header() {
                     component="div"
                     sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' }, textAlign: "left", fontFamily: 'monospace' }}
                 >
-                    Sightek | shortListed
+                    <Link to="/" sx={{color: "white", textDecorations: "none"}}>Sightek | shortListed</Link>
+                   
                 </Typography>
                 { !isLoggedIn &&
                     <Link 

@@ -1,6 +1,9 @@
 #foot {
-    background-color: #343243;
-    color:black;
-    height: 100px;
-    padding: 5%;
+    position: relative;
+    top: 80vh;
+    bottom: 0vh;
+    background-color: #000322;
+    color: white;
+    height: max-content;
+    padding: 2% 5%;
 }

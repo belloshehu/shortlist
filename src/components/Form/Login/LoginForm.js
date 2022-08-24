@@ -36,6 +36,7 @@ function LoginForm() {
     const [value, setValue] = useState(initialValue)
     const [error, setError] = useState(false)
     const [status, setStatus] = useState("")
+    const [isLoading, setIsLoading] = useState(false)
 
     const handlePasswordVisibilityClick = (e) =>{
         if(inputType === "password"){
@@ -50,8 +51,10 @@ function LoginForm() {
     const handleInputChange = (e) =>{
         setValue({...value, [e.target.name]: e.target.value})
     }
+
     const handleFormSubmit = async(e) => {
         // submit form
+        setIsLoading(!isLoading)
         e.preventDefault()
         const {email, password} = value
         if(password === "" || email === ""){
@@ -64,9 +67,9 @@ function LoginForm() {
                 console.log(data.token)
                 localStorage.setItem('token', data.token)
                 setStatus(`Logged in ${data.organisation.name}`)
-                dispatch(toggleIsLoggedIn(true));
                 dispatch(setUser(data.organisation))
-                
+                dispatch(toggleIsLoggedIn(true));
+                setIsLoading(!isLoading)
             }catch(error){
                 console.log(error)
                 setStatus("Login failed ")
@@ -123,11 +126,17 @@ function LoginForm() {
                         </Grid> 
                         <Grid item sm={12} lg={6}>
                             <Button variant="contained" type="submit"  edge="start">Submit</Button>
+                            <Link 
+                                variant="contained"  
+                                to="/" edge="end" 
+                                component={Button}
+                                sx={{marginLeft:'20px'}}>Cancel</Link>
                         </Grid>
                         <Grid item sm={12} lg={6}>
-                            <Link variant="contained"  to="/" edge="end" component={Button}>Cancel</Link>
+                            <Typography>Have no account? 
+                                <Link variant="contained"  to="/signup" edge="end" component={Button}> Sign up</Link>
+                            </Typography>
                         </Grid>
-
                     </Grid>   
                 </FormGroup>
             </form>
